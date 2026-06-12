@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Escolar Inteligente</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">PORTAL<span>.</span></div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#atividades">Atividades</a></li>
+                <li><a href="#avaliacoes">Avaliações</a></li>
+                <li><a href="#horarios">Horários</a></li>
+                <li><a href="#avisos">Avisos</a></li>
+                <li><button id="btn-config" class="btn-perfil">⚙️ Perfil</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="modal-config" class="modal">
+        <div class="modal-content">
+            <h3>Configurações de Usuário</h3>
+            
+            <label>Seu Nome:</label>
+            <input type="text" id="username" placeholder="Como quer ser chamado?">
+
+            <label>Modo do Tema:</label>
+            <select id="theme-mode">
+                <option value="auto">Automático (Pela Hora)</option>
+                <option value="light">☀️ Sempre Claro</option>
+                <option value="dark">🌙 Sempre Escuro</option>
+            </select>
+
+            <label>Cor de Destaque:</label>
+            <select id="theme-color">
+                <option value="#38bdf8">Azul Celestial</option>
+                <option value="#22c55e">Verde Esmeralda</option>
+                <option value="#eab308">Amarelo Ouro</option>
+                <option value="#ef4444">Vermelho Rubi</option>
+                <option value="#a855f7">Roxo Místico</option>
+                <option value="#f472b6">Rosa Pink</option>
+                <option value="#fb923c">Laranja Vibrante</option>
+                <option value="#14b8a6">Ciano Marinho</option>
+            </select>
+            
+            <label>Efeito de Clima:</label>
+            <select id="clima-teste">
+                <option value="auto">Clima Normal</option>
+                <option value="chuva">Simular Tempestade 🌧️</option>
+            </select>
+            
+            <div class="modal-buttons">
+                <button id="btn-salvar">Salvar Tudo</button>
+                <button id="btn-fechar">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <section id="inicio" class="hero">
+        <div id="clima-container" class="clima-sky">
+            <div class="astro" id="astro-id"></div>
+            <div class="nuvem n1"></div>
+            <div class="nuvem n2"></div>
+            <div class="raio" id="raio-id"></div>
+        </div>
+
+        <div class="hero-content">
+            <h1 class="welcome-text" id="welcome-title">Seja Bem Vindo</h1>
+            <p id="subtitulo-boasvindas">Sua plataforma completa de organização acadêmica.</p>
+        </div>
+    </section>
+
+    <section id="atividades" class="content-section">
+        <h2>Atividades</h2>
+        <div class="card-grid">
+            <div class="card"><h3>Matemática</h3><p>Lista de exercícios sobre funções.</p></div>
+            <div class="card"><h3>História</h3><p>Leitura sobre a Revolução Industrial.</p></div>
+        </div>
+    </section>
+
+    <section id="avaliacoes" class="content-section alt-bg">
+        <h2>Avaliações e Trabalhos</h2>
+        <p>Confira seus prazos e entregas pendentes.</p>
+        <div class="status-bar">Simulado Mensal - 15/06</div>
+    </section>
+
+    <section id="horarios" class="content-section">
+        <h2>Horários</h2>
+        <table class="horario-table">
+            <thead>
+                <tr><th>Segunda</th><th>Terça</th><th>Quarta</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Português</td><td>Física</td><td>Artes</td></tr>
+                <tr><td>Geografia</td><td>Química</td><td>Biologia</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="avisos" class="content-section alt-bg">
+        <h2>Avisos</h2>
+        <div class="aviso-box">
+            <strong>Aviso:</strong> KAKkkakkka
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Portal Acadêmico - Design Personalizado</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
