@@ -1,0 +1,116 @@
+/* Variáveis de Cores (O JS vai mudar o --cor-acento) */
+:root {
+    --bg-geral: #0f172a;
+    --bg-secao-alt: #1e293b;
+    --texto-principal: #f8fafc;
+    --texto-secundario: #94a3b8;
+    --cor-acento: #38bdf8; 
+    --bg-sky: linear-gradient(to bottom, #1e3a8a, #0f172a);
+}
+
+/* CLASSES DE MODO (CLARO / ESCURO) */
+body.tema-dia {
+    --bg-geral: #f1f5f9;
+    --bg-secao-alt: #e2e8f0;
+    --texto-principal: #0f172a;
+    --texto-secundario: #475569;
+    --bg-sky: linear-gradient(to bottom, #bae6fd, #e0f2fe);
+}
+
+body.tema-noite {
+    --bg-geral: #0f172a;
+    --bg-secao-alt: #1e293b;
+    --texto-principal: #f8fafc;
+    --texto-secundario: #94a3b8;
+    --bg-sky: linear-gradient(to bottom, #020617, #0f172a);
+}
+
+body.tema-chuva {
+    --bg-geral: #1e293b;
+    --bg-secao-alt: #0f172a;
+    --texto-principal: #f8fafc;
+    --texto-secundario: #94a3b8;
+    --bg-sky: linear-gradient(to bottom, #334155, #1e293b);
+}
+
+/* Estilos Básicos */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+body { background-color: var(--bg-geral); color: var(--texto-principal); transition: all 0.5s ease; overflow-x: hidden; }
+
+/* Menu Superior */
+header {
+    position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between;
+    align-items: center; padding: 20px 5%; background: rgba(15, 23, 42, 0.1);
+    backdrop-filter: blur(15px); z-index: 1000; border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo { font-size: 1.5rem; font-weight: 800; color: var(--texto-principal); }
+.logo span { color: var(--cor-acento); }
+.nav-links { display: flex; list-style: none; gap: 25px; align-items: center; }
+.nav-links a { text-decoration: none; color: var(--texto-secundario); font-weight: 500; transition: 0.3s; }
+.nav-links a:hover { color: var(--cor-acento); }
+
+.btn-perfil {
+    background: var(--bg-secao-alt); border: 1px solid var(--cor-acento);
+    color: var(--texto-principal); padding: 8px 18px; border-radius: 20px; cursor: pointer;
+}
+
+/* Painel Hero e Clima */
+.hero { height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+.clima-sky { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-sky); z-index: -1; }
+
+.astro { position: absolute; top: 15%; right: 10%; width: 100px; height: 100px; border-radius: 50%; transition: 0.8s; }
+body.tema-dia .astro { background: #f59e0b; box-shadow: 0 0 50px #f59e0b; }
+body.tema-noite .astro { background: #e2e8f0; box-shadow: 0 0 30px #f1f5f9; }
+body.tema-chuva .astro { opacity: 0; }
+
+.nuvem { position: absolute; background: rgba(255, 255, 255, 0.8); border-radius: 100px; display: none; }
+.nuvem::before, .nuvem::after { content: ''; position: absolute; background: inherit; border-radius: 50%; }
+.nuvem::before { width: 80px; height: 80px; top: -40px; left: 20px; }
+.nuvem::after { width: 100px; height: 100px; top: -50px; right: 20px; }
+
+body.tema-dia .nuvem, body.tema-chuva .nuvem { display: block; }
+body.tema-chuva .nuvem { background: #475569; }
+.nuvem.n1 { width: 250px; height: 70px; top: 20%; left: 10%; animation: flutuar 10s infinite alternate; }
+.nuvem.n2 { width: 200px; height: 60px; top: 25%; right: 20%; animation: flutuar 15s infinite alternate-reverse; }
+
+@keyframes flutuar { from { transform: translateX(-20px); } to { transform: translateX(20px); } }
+
+.raio { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #fff; opacity: 0; display: none; pointer-events: none; }
+body.tema-chuva .raio { display: block; animation: relampago 8s infinite; }
+@keyframes relampago { 0%, 94%, 96%, 100% { opacity: 0; } 95% { opacity: 0.8; } 95.5% { opacity: 0; } 95.8% { opacity: 0.5; } }
+
+.welcome-text { font-size: 5rem; font-weight: 800; color: var(--texto-principal); text-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+
+/* Seções */
+.content-section { padding: 100px 10%; min-height: 60vh; }
+.alt-bg { background-color: var(--bg-secao-alt); }
+h2 { font-size: 2.5rem; margin-bottom: 40px; border-left: 6px solid var(--cor-acento); padding-left: 20px; }
+
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+.card { background: var(--bg-geral); padding: 30px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.05); transition: 0.3s; }
+.card:hover { border-color: var(--cor-acento); transform: translateY(-5px); }
+
+.horario-table { width: 100%; border-collapse: collapse; background: var(--bg-geral); border-radius: 15px; overflow: hidden; }
+.horario-table th, .horario-table td { padding: 20px; border: 1px solid rgba(255, 255, 255, 0.05); text-align: center; }
+.horario-table th { background: var(--cor-acento); color: #fff; }
+
+.aviso-box { background: var(--cor-acento); color: #fff; padding: 25px; border-radius: 15px; font-weight: 600; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+
+footer { padding: 50px; text-align: center; color: var(--texto-secundario); border-top: 1px solid rgba(255,255,255,0.05); }
+
+/* Modal */
+.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); z-index: 2000; justify-content: center; align-items: center; }
+.modal-content { background: var(--bg-secao-alt); padding: 35px; border-radius: 25px; width: 90%; max-width: 450px; border: 1px solid var(--cor-acento); display: flex; flex-direction: column; gap: 15px; }
+.modal-content label { font-size: 0.9rem; font-weight: 600; color: var(--texto-secundario); }
+.modal-content input, .modal-content select { padding: 12px; border-radius: 10px; background: var(--bg-geral); color: var(--texto-principal); border: 1px solid rgba(255,255,255,0.1); }
+.modal-buttons { display: flex; gap: 15px; margin-top: 10px; }
+#btn-salvar { background: var(--cor-acento); color: #fff; font-weight: bold; border: none; padding: 15px; border-radius: 12px; flex: 2; cursor: pointer; }
+#btn-fechar { background: transparent; color: var(--texto-secundario); border: 1px solid rgba(255,255,255,0.1); padding: 15px; border-radius: 12px; flex: 1; cursor: pointer; }
+
+/* Celular */
+@media (max-width: 768px) {
+    .nav-links { display: none; } /* Simplificação para o mobile */
+    .welcome-text { font-size: 2.5rem; }
+    .content-section { padding: 60px 5%; }
+}
