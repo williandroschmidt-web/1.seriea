@@ -46,7 +46,7 @@ function aplicarTemaConfigurado() {
             subtitulo.innerText = "☀️ Tenha um excelente dia de aprendizado!";
         } else {
             document.body.classList.add('tema-noite');
-            subtitulo.innerText = "🌙 Noite produtiva de estudos por aqui.";
+            subtitulo.innerText = "🌙 Tenha uma Boa Noite.";
         }
     }
 }
