@@ -43,10 +43,13 @@ function aplicarTemaConfigurado() {
 
         if (eDia) {
             document.body.classList.add('tema-dia');
-            subtitulo.innerText = "☀️ Tenha um excelente dia de aprendizado!";
+            subtitulo.innerText = "☀️ Tenha um excelente dia de aprendizado!
+            
+            Lembre, ultilize esse site em modo Desktop/Computador";
         } else {
             document.body.classList.add('tema-noite');
-            subtitulo.innerText = "🌙 Tenha uma Boa Noite.";
+            subtitulo.innerText = "🌙 Tenha uma Boa Noite.
+            Lembre, utilize esse site em modo Desktop/Computador";
         }
     }
 }
