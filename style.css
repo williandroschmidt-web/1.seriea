@@ -53,6 +53,7 @@ header {
 .btn-perfil {
     background: var(--bg-secao-alt); border: 1px solid var(--cor-acento);
     color: var(--texto-principal); padding: 8px 18px; border-radius: 20px; cursor: pointer;
+    position: relative; z-index: 1010; /* Garante que o botão fica acima de tudo para poder clicar */
 }
 
 /* Painel Hero e Clima */
@@ -91,7 +92,7 @@ h2 { font-size: 2.5rem; margin-bottom: 40px; border-left: 6px solid var(--cor-ac
 .card { background: var(--bg-geral); padding: 30px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.05); transition: 0.3s; }
 .card:hover { border-color: var(--cor-acento); transform: translateY(-5px); }
 
-/* TABELA MELHORADA PARA NÃO QUEBRAR */
+/* Tabela */
 .horario-table { width: 100%; border-collapse: collapse; background: var(--bg-geral); border-radius: 15px; overflow: hidden; table-layout: fixed; }
 .horario-table th, .horario-table td { padding: 20px; border: 1px solid rgba(255, 255, 255, 0.05); text-align: center; word-wrap: break-word; }
 .horario-table th { background: var(--cor-acento); color: #fff; }
@@ -100,7 +101,7 @@ h2 { font-size: 2.5rem; margin-bottom: 40px; border-left: 6px solid var(--cor-ac
 
 footer { padding: 50px; text-align: center; color: var(--texto-secundario); border-top: 1px solid rgba(255,255,255,0.05); width: 100%; }
 
-/* Modal */
+/* Modal Corrigido para Mobile */
 .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); z-index: 2000; justify-content: center; align-items: center; padding: 20px; }
 .modal-content { background: var(--bg-secao-alt); padding: 35px; border-radius: 25px; width: 100%; max-width: 450px; border: 1px solid var(--cor-acento); display: flex; flex-direction: column; gap: 15px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
 .modal-content label { font-size: 0.9rem; font-weight: 600; color: var(--texto-secundario); }
@@ -109,39 +110,21 @@ footer { padding: 50px; text-align: center; color: var(--texto-secundario); bord
 #btn-salvar { background: var(--cor-acento); color: #fff; font-weight: bold; border: none; padding: 15px; border-radius: 12px; flex: 2; cursor: pointer; }
 #btn-fechar { background: transparent; color: var(--texto-secundario); border: 1px solid rgba(255,255,255,0.1); padding: 15px; border-radius: 12px; flex: 1; cursor: pointer; }
 
-/* =======================================================
-   O SENSOR DO DISPOSITIVO (MEDIA QUERY ATUALIZADA)
-   ======================================================= */
+/* CELULAR - SENSOR DO DISPOSITIVO */
 @media (max-width: 768px) {
-    /* Ajustes do Header para Celular */
-    header { 
-        padding: 15px 4%; 
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
-    
+    header { padding: 15px 4%; }
     .logo { font-size: 1.1rem; }
     
-    /* Faz as gavetas do menu sumirem para dar espaço, deixando apenas o Perfil acessível */
-    .nav-links { gap: 8px; }
-    .nav-links li:not(:last-child) { display: none; } /* Deixa apenas o botão Perfil visível para não amontoar tudo */
+    /* MODIFICAÇÃO CRUCIAL: Remove os outros links do código invisível para liberar o espaço do clique */
+    .nav-links li:not(:last-child) { display: none !important; } 
+    .nav-links { width: auto; }
 
-    /* Corrige o tamanho gigante do texto */
     .welcome-text { font-size: 2.2rem; padding: 0 10px; line-height: 1.3; }
     .hero p { font-size: 0.9rem; padding: 0 20px; }
-    
-    /* Evita os espaços em branco gigantes nas laterais */
     .content-section { padding: 50px 5%; }
     h2 { font-size: 1.6rem; margin-bottom: 25px; }
 
-    /* Ajuste da Tabela de Horários para caber perfeitamente na tela do celular */
-    .horario-table th, .horario-table td { 
-        padding: 10px 5px; 
-        font-size: 0.75rem; 
-    }
-
-    /* Corrige a caixinha do Perfil para que apareça inteira no celular sem precisar do modo computador */
+    .horario-table th, .horario-table td { padding: 10px 5px; font-size: 0.75rem; }
     .modal { padding: 10px; }
     .modal-content { padding: 20px; gap: 10px; }
     #btn-salvar, #btn-fechar { padding: 12px; font-size: 0.9rem; }
